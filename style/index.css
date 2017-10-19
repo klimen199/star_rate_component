@@ -1,0 +1,15 @@
+#rate_background {
+    position: relative;
+    width: 250px;
+    height: 50px;
+    background:url('../img/star_gray_.png') repeat-x;
+    margin: 0 30px;
+}
+#rate_bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50px;
+    background:url('../img/star_red_.png') repeat-x;
+    width: 30%;
+}

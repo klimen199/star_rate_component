@@ -1,0 +1,52 @@
+.stars{
+    list-style: none;
+}
+.star{
+    display: inline-block;
+    background-image: url("../img/star_gray_.png");
+    width: 50px;
+    height: 50px;
+}
+.selected{
+    background-image: url("../img/star_red_.png");
+}
+
+
+.histogramLine > div{
+    display: inline-block;
+    height: 40px;
+}
+.histogramTitle{
+    width: 50px;
+    line-height: 40px;
+    text-align: center;
+}
+.histogramRate{
+    width: 200px;
+    text-align: center;
+}
+.histogramRate >div{
+    display: inline-block;
+}
+.rateNumber{
+    width: 40px;
+    margin: 0 5%;
+}
+.rateIndicatorBack{
+    position: relative;
+    display: inline-block;
+    width: 70%;
+    height: 40%;
+    margin-top: 6%;
+    background-color: #c4c4c4;
+}
+.rateIndicatorBar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #ff5431;
+    width: 30%;
+}
+
+
