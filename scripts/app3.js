@@ -13,6 +13,7 @@ class Star extends React.Component{
     }
 }
 
+
 class RateMaking extends React.Component{
     constructor(props){
         super(props);
@@ -33,8 +34,9 @@ class RateMaking extends React.Component{
         })
     }
     _submitRate(rate){
-        function modifyRate(key) {
-            let k = key+'star';
+        let a = rate;
+        (function () {
+            let k = a+'star';
             if(window.localStorage[k] == undefined){
                 window.localStorage[k] = 1;
             }
@@ -42,29 +44,7 @@ class RateMaking extends React.Component{
                 let val = parseInt(window.localStorage[k]);
                 window.localStorage[k] = ++val;
             }
-        }
-        switch (rate){
-            case 1:{
-                modifyRate(1);
-                break;
-            }
-            case 2:{
-                modifyRate(2);
-                break;
-            }
-            case 3:{
-                modifyRate(3);
-                break;
-            }
-            case 4:{
-                modifyRate(4);
-                break;
-            }
-            case 5:{
-                modifyRate(5);
-                break;
-            }
-        }
+        })();
     }
     render(){
         let active = [],
@@ -113,14 +93,14 @@ class HistogramLine extends React.Component{
         else{
             barWidth = 140;
         }
-        return (barWidth * parseInt(this.props.votesNum) /parseInt(this.props.maxVotes));
+        return (barWidth * parseInt(this.props.vNum) /parseInt(this.props.maxVotes));
     }
     render(){
         return (
             <div className="histogramLine">
                 <div className="histogramTitle">{this.props.title} Stars</div>
                 <div className="histogramRate">
-                    <div className="rateNumber">{this.props.votesNum}</div>
+                    <div className="rateNumber">{this.props.vNum}</div>
                     <div className="rateIndicatorBack">
                         <div className="rateIndicatorBar" style={{width:this.getScaleStyle()}}></div>
                     </div>
@@ -157,7 +137,7 @@ class RateHistogram extends React.Component{
         for (i=0; i<this.props.starNum;i++){
             arr.push({
                 title:i+1,
-                votesNum:window.localStorage[(i+1)+'star']
+                votesNum:(window.localStorage[(i+1)+'star']||0)
             })
         }
         this.setState({histInfo:arr});
@@ -165,7 +145,6 @@ class RateHistogram extends React.Component{
     }
     getMaxVoteNum(){
         let maxVotes = 0;
-        console.log(this.state.histInfo.length + ' len');
         this.state.histInfo.forEach((el,i) =>{
             if(parseInt(el.votesNum) > maxVotes){
                 maxVotes = el.votesNum;
@@ -180,7 +159,7 @@ class RateHistogram extends React.Component{
         hists = this.state.histInfo.map((el, i) =>
         {
             return <HistogramLine key={i}
-                                  votesNum = {parseInt(el.votesNum) || 0}
+                                  vNum = {parseInt(el.votesNum) || 0}
                                   maxVotes = {maxVotes}
                                   title={el.title}/>;
         });
@@ -206,7 +185,6 @@ class App extends React.Component{
         this.onChange = this.onChange.bind(this)
     }
     onChange(val){
-        console.log(val);
         this.setState({newStarIndex: val});     //сделать правильно
     }
     render(){
