@@ -97,6 +97,8 @@ class RateMaking extends React.Component{
 
 
 
+
+
 class HistogramLine extends React.Component{
     constructor(props){
         super(props);
@@ -105,7 +107,7 @@ class HistogramLine extends React.Component{
     getScaleStyle(){
         let barWidth;
         if(document.getElementsByClassName('rateIndicatorBack')[0] != undefined){
-        let indicatorBar = document.getElementsByClassName('rateIndicatorBack')[0];
+            let indicatorBar = document.getElementsByClassName('rateIndicatorBack')[0];
             barWidth = getComputedStyle(indicatorBar).width.slice(0,-2);
         }
         else{
@@ -190,6 +192,8 @@ class RateHistogram extends React.Component{
         )
     }
 }
+
+
 
 
 class App extends React.Component{
